@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
 
 namespace Assignment
 {
@@ -7,16 +8,16 @@ namespace Assignment
     {
         public void Start()
         {
-             AS01_CountWords();
-             AS02_CountNumber();
-             AS03_CheckValidBrackets();
-             AS04_PrintReverseLinkedList();
-             AS05_FindMiddleElement();
-             AS06_MergeDictionaries();
-             AS07_RemoveDuplicatesFromLinkedList();
-             AS08_TopFrequentNumber();
-             AS09_PlayerInventory();
-             AS10_GameEventQueue();
+            // AS01_CountWords();
+            // AS02_CountNumber();
+            // AS03_CheckValidBrackets();
+            // AS04_PrintReverseLinkedList();
+            // AS05_FindMiddleElement();
+            // AS06_MergeDictionaries();
+            // AS07_RemoveDuplicatesFromLinkedList();
+            // AS08_TopFrequentNumber();
+            // AS09_PlayerInventory();
+            // AS10_GameEventQueue();
              AS11_PlayerStatsTracker();
         }
 
@@ -305,8 +306,42 @@ namespace Assignment
 
         public void AS10_GameEventQueue()
         {
-            LinkedList<GameEvent> eventQueue = as10EventQueue.GetLinkedList();
-            throw new System.NotImplementedException();
+            LinkedList<GameEvent> eventQueue =
+        as10EventQueue.GetLinkedList();
+
+            if (eventQueue.Count == 0)
+            {
+                Debug.Log("Event queue is empty");
+                return;
+            }
+
+            while (eventQueue.Count > 0)
+            {
+                GameEvent currentEvent = eventQueue.First.Value;
+                eventQueue.RemoveFirst();
+
+                Debug.Log($"Processing event: {currentEvent.Name}");
+                Debug.Log($"Remaining events in queue: {eventQueue.Count}");
+
+                if (currentEvent.EventType == "enemy")
+                {
+                    Debug.Log(
+                        $"Enemy event processed - {currentEvent.Name}"
+                    );
+                }
+                else if (currentEvent.EventType == "powerup")
+                {
+                    Debug.Log(
+                        $"Power-up event processed - {currentEvent.Name}"
+                    );
+                }
+                else if (currentEvent.EventType == "level")
+                {
+                    Debug.Log(
+                        $"Level event processed - {currentEvent.Name}"
+                    );
+                }
+            }
         }
 
         [Header("AS11 - Player Stats Tracker")]
